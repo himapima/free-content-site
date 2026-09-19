@@ -22,7 +22,7 @@ import os
 
 load_dotenv()
 
-import gemini_keys  # 複数のGemini APIキーを順に使うためのヘルパー
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 RESEARCH_MODEL = "gemini-3.6-flash"
 WRITER_MODEL = "gemini-3.6-flash"
@@ -42,8 +42,15 @@ ARTICLE_TONE_GUIDE = """\
 """
 
 
+def _client() -> genai.Client:
+    if not GEMINI_API_KEY:
+        raise RuntimeError("GEMINI_API_KEY が設定されていません")
+    return genai.Client(api_key=GEMINI_API_KEY)
+
+
 def _generate(prompt: str, model: str, json_mode: bool = False, use_search: bool = False) -> str:
-    """Gemini APIを呼び出す。無料枠の429が出たら別のAPIキーへ自動で切り替える"""
+    """Gemini APIを呼び出し、無料枠のレート制限(429)には自動リトライする"""
+    client = _client()
     config_kwargs = {}
     if json_mode:
         config_kwargs["response_mime_type"] = "application/json"
@@ -51,16 +58,23 @@ def _generate(prompt: str, model: str, json_mode: bool = False, use_search: bool
         config_kwargs["tools"] = [types.Tool(google_search=types.GoogleSearch())]
     config = types.GenerateContentConfig(**config_kwargs) if config_kwargs else None
 
-    def _call(api_key: str) -> str:
-        client = genai.Client(api_key=api_key)
-        response = client.models.generate_content(
-            model=model,
-            contents=prompt,
-            config=config,
-        )
-        return (response.text or "").strip()
-
-    return gemini_keys.call_with_failover(_call, rounds=MAX_RETRIES, waits=(5, 10, 20))
+    last_error: Optional[Exception] = None
+    for attempt in range(MAX_RETRIES):
+        try:
+            response = client.models.generate_content(
+                model=model,
+                contents=prompt,
+                config=config,
+            )
+            return (response.text or "").strip()
+        except Exception as e:
+            last_error = e
+            error_msg = str(e)
+            if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
+                time.sleep(5)
+            elif attempt < MAX_RETRIES - 1:
+                time.sleep(2)
+    raise RuntimeError(f"Gemini APIの呼び出しに失敗しました: {last_error}")
 
 
 def _parse_json(text: str) -> dict:
