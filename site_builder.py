@@ -28,7 +28,17 @@ SITE_TAGLINE = "実際のレビューをもとに、暮らしを少し良くす�
 
 _env = Environment(loader=FileSystemLoader(str(BASE_DIR / "templates")), autoescape=True)
 
-NAV_CATEGORIES = [{"id": g["id"], "label": g["label"], "color": g["color"]} for g in content_pipeline.GENRES]
+ALL_CATEGORIES = [{"id": g["id"], "label": g["label"], "color": g["color"]} for g in content_pipeline.GENRES]
+# ナビに出すカテゴリー。ジャンルを新しく増やした直後はまだ記事が0本で、そのまま出すと
+# 「開いても何も無いページ」がメニューに並んでしまう。記事が1本でも入った時点で自動的に
+# メニュー・サイトマップへ現れるよう、build_site() の時点で絞り込む。
+NAV_CATEGORIES = list(ALL_CATEGORIES)
+
+
+def _refresh_nav(posted: list[dict]):
+    global NAV_CATEGORIES
+    have = {a.get("genre_id") for a in posted}
+    NAV_CATEGORIES = [c for c in ALL_CATEGORIES if c["id"] in have] or list(ALL_CATEGORIES)
 
 
 def _canonical(path: str) -> str:
@@ -64,6 +74,7 @@ def _article_json_ld(article: dict) -> str:
 
 def render_article(article: dict, all_articles: list[dict]):
     ARTICLES_DIR.mkdir(parents=True, exist_ok=True)
+    _refresh_nav(all_articles)
     html = _env.get_template("article.html").render(
         article=article,
         related=_related_articles(article, all_articles),
@@ -108,6 +119,8 @@ def render_category_pages(posted: list[dict]):
             key=lambda a: a["published_at"],
             reverse=True,
         )
+        if not articles:
+            continue  # まだ記事が無いジャンルは、空のページを作らない
         html = _env.get_template("category.html").render(
             articles=articles,
             genre=genre,
@@ -128,7 +141,7 @@ def write_sitemap(posted: list[dict]):
         return  # 公開URLが未設定の間はサイトマップを作らない(間違った絶対URLを埋め込まないため)
     urls = [f"{SITE_BASE_URL}/index.html"]
     urls += [f"{SITE_BASE_URL}/articles/{a['slug']}.html" for a in posted]
-    urls += [f"{SITE_BASE_URL}/categories/{g['id']}.html" for g in content_pipeline.GENRES]
+    urls += [f"{SITE_BASE_URL}/categories/{c['id']}.html" for c in NAV_CATEGORIES]
     urls += [f"{SITE_BASE_URL}/{p['slug']}.html" for p in STATIC_PAGES]
     body = "\n".join(f"  <url><loc>{escape(u)}</loc></url>" for u in urls)
     xml = f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}\n</urlset>\n'
@@ -196,6 +209,7 @@ def render_static_pages():
 
 def build_site(posted: list[dict]):
     """全記事分のindex/カテゴリページ/sitemap/robotsを再生成する(新しい記事を1本作った後などに呼ぶ)"""
+    _refresh_nav(posted)
     render_index(posted)
     render_category_pages(posted)
     render_static_pages()
