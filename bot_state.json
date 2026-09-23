@@ -1,5 +1,5 @@
 {
-  "last_genre_index": 1,
+  "last_genre_index": 2,
   "used_info_topics_kitchen": [
     "まな板・フライパンを長持ちさせる手入れ方法",
     "冷蔵庫の野菜室を長持ちさせる保存のコツ",
@@ -22,7 +22,8 @@
   ],
   "used_info_topics_lifestyle": [
     "一人暮らしの洗濯物を生乾きにしない干し方",
-    "部屋の湿気・カビ対策の基本"
+    "部屋の湿気・カビ対策の基本",
+    "待機電力を減らして電気代を抑える方法"
   ],
   "used_info_topics_appliance": [
     "最新の時短家電で家事の時間は実際にどれだけ減るのか"
