@@ -39,6 +39,9 @@ GENRES = [
     {
         "id": "beauty",
         "label": "メンズ美容",
+        # 2026-09-29 ユーザー依頼(「美容系いらない」)で新規記事の作成を停止。
+        # 公開済み記事のカテゴリページは残すため、定義自体は消さずにローテーションから外している。
+        "active": False,
         "keyword": "メンズコスメ",
         "color": "#b45309",
         "photo_query": "men skincare grooming",
@@ -214,7 +217,12 @@ def save_posted(posted: list[dict]):
 
 
 def pick_genre(state: dict) -> dict:
-    idx = (state.get("last_genre_index", -1) + 1) % len(GENRES)
+    # "active": False のジャンルは飛ばす(カテゴリページ用に定義だけ残しているもの)
+    idx = state.get("last_genre_index", -1)
+    for _ in range(len(GENRES)):
+        idx = (idx + 1) % len(GENRES)
+        if GENRES[idx].get("active", True):
+            break
     state["last_genre_index"] = idx
     return GENRES[idx]
 

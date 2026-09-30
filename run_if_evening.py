@@ -3,7 +3,7 @@
 デスクトップへのログオン時にタスクスケジューラから呼ばれる入り口スクリプト。
 rakuten_threads_bot/run_if_evening.py と同じパターン。
 
-- 20時より前なら何もせず終了する
+- 19時より前なら何もせず終了する
 - その日すでに実行済みなら何もせず終了する(同じ晩に何度もログオンしても1日1回だけ)
 - 上記に該当しなければ generate_and_publish.py を1回実行する(記事1本を生成・公開)
 
@@ -45,15 +45,15 @@ def main():
     now = datetime.now()
     today = now.strftime("%Y-%m-%d")
 
-    if now.hour < 20:
-        log(f"20時より前({now.strftime('%H:%M')})なので今回は実行しません。")
+    if now.hour < 19:
+        log(f"19時より前({now.strftime('%H:%M')})なので今回は実行しません。")
         return
 
     if already_run_today(today):
         log("本日はすでに実行済みなのでスキップします。")
         return
 
-    log(f"20時以降のログオンを検知。generate_and_publish.py を{POSTS_PER_RUN}回連続実行します。")
+    log(f"19時以降のログオンを検知。generate_and_publish.py を{POSTS_PER_RUN}回連続実行します。")
 
     success_count = 0
     for i in range(POSTS_PER_RUN):

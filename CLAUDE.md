@@ -40,7 +40,7 @@
 - 2026-09-10にデザインを全面刷新(Web検索でリサーチ済み、詳細は`C:\Users\naoya\.claude\skills\free-content-site\SKILL.md`の「デザイン方針」参照)。記事の全内容を`posted_articles.json`に保存するようにしたため、`python site_builder.py`(=`rebuild_all_pages()`)でAI呼び出しなしに全ページへデザイン変更を反映できる。
 - ヘッダーにジャンル別ナビゲーション、`docs/categories/<genre_id>.html`のカテゴリー一覧ページ、トップページの注目記事(最新1件の大きなカード)、ファビコン、記事ページのJSON-LD(Article構造化データ)を追加済み。
 - **姉妹プロジェクトrakuten_threads_botから送客する仕組みを追加**(2026-09-10、ユーザー提案): Threadsの役立ち情報(Tips)投稿に、同ジャンルのfree_content_site最新記事へのリンクを添えるようにした(`rakuten_threads_bot/main.py`の`get_site_article_link`)。Tips投稿はもともと収益化していないため、送客に使っても既存の商品紹介投稿(Rakutenへの直接リンクが主CTA)と競合しない。
-- Phase 5のうち日次タスク`ContentSite_EveningAutoUpdate`(ログオン時トリガー+20時以降+1日1回ガード、`run_if_evening.py`)は登録済み。
+- Phase 5のうち日次タスク`ContentSite_EveningAutoUpdate`(ログオン時トリガー+19時以降+1日1回ガード、`run_if_evening.py`)は登録済み。
 - Phase 3(Search Console/Analytics連携によるアクセス分析→自動修正ループ)は**未着手**。Google Cloudでの OAuthクライアント発行・Search Console/Analyticsプロパティ作成というユーザー側の追加作業が必要。記事の蓄積・インデックス登録には数日〜数週間かかるため、急ぐ理由がない限り後回しでよい。
 - Google Search Console/Analyticsの「サイト所有権確認」「アクセス解析タグの設置」自体は、ユーザーがプロパティを作成して確認コード/測定IDを教えてくれれば、Claudeが`templates/base.html`にタグを追加するだけで完了する(OAuth連携なしでも可視化はできる)。
 - **コメント機能(2026-09-11追加、同日中にgiscusから自作に差し替え)**: 当初はgiscus(GitHub Discussions利用)を`templates/article.html`に埋め込んだが、GitHubアカウントが無い訪問者もコメントできるようにするため、Cloudflare Worker + D1(`comments-worker/`)による匿名コメント機能を自作して差し替えた。`docs/comments.js`が記事ページからWorkerのAPIを呼び出す。管理用の削除トークンは`.env`の`COMMENTS_ADMIN_TOKEN`。
@@ -55,7 +55,7 @@
 
 ## 自動投稿スケジュール
 
-`ContentSite_EveningAutoUpdate`(日次・ログオン時トリガー、20時以降・当日未実行なら`generate_and_publish.py`を1回実行)を登録済み。`ContentSite_WeeklyReview`(週次のアクセス分析→修正)はPhase 3未着手のため未登録。
+`ContentSite_EveningAutoUpdate`(日次・ログオン時トリガー、19時以降(2026-09-29に20時→19時へ変更)・当日未実行なら`generate_and_publish.py`を1回実行)を登録済み。`ContentSite_WeeklyReview`(週次のアクセス分析→修正)はPhase 3未着手のため未登録。
 
 ## ユーザーについて
 
@@ -82,3 +82,5 @@
 - 任意環境変数: `SITE_BASE_URL`(公開後のサイトURL。sitemap/canonical生成に使用。未設定の間はsitemapを生成しない)、`SITE_ARTICLE_TYPE_RATIO`(既定0.5、情報系記事になる確率)、`CLAUDE_CLI_PATH`(claude.exeの場所。既定値のままで通常は問題ない)、`PEXELS_API_KEY`(情報系記事のヒーロー画像用)
 - ローカルでの動作確認: `python generate_and_publish.py` を実行後、`python -m http.server --directory docs 8765` 等で`docs/`を配信してブラウザ確認できる
 - ジャンル・トピックを増やす場合は`content_pipeline.py`の`GENRES`を編集する(`color`と`photo_query`も一緒に設定する)
+
+- **メンズ美容ジャンルの停止(2026-09-29、ユーザー依頼「美容系いらない」)**: `content_pipeline.py`の`beauty`に`"active": False`を付け、`pick_genre`で飛ばすようにした。公開済みの美容記事とカテゴリページは残すため定義自体は削除していない。楽天Threadsボット側もメンズ美容ジャンルを削除済み。
