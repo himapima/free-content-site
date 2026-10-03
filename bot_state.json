@@ -1,5 +1,5 @@
 {
-  "last_genre_index": 5,
+  "last_genre_index": 6,
   "used_info_topics_kitchen": [
     "まな板・フライパンを長持ちさせる手入れ方法",
     "冷蔵庫の野菜室を長持ちさせる保存のコツ",
@@ -38,5 +38,8 @@
   ],
   "used_info_topics_china_gadget": [
     "Huaweiの最新スマートウォッチでできることと注意点"
+  ],
+  "used_info_topics_apple": [
+    "最新iPhoneの新機能と、前モデルからの変更点"
   ]
 }
