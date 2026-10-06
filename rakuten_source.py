@@ -6,6 +6,7 @@ rakuten_threads_bot/main.py の fetch_rakuten_items と同じロジック(アフ
 
 import os
 import re
+import time
 
 import requests
 from dotenv import load_dotenv
@@ -37,8 +38,19 @@ def fetch_items(keyword: str = "", genre_id: str = "") -> list[dict]:
     if genre_id:
         params["genreId"] = genre_id
 
-    resp = requests.get(RAKUTEN_SEARCH_URL, params=params, timeout=15)
-    resp.raise_for_status()
+    # requests の例外文にはキー入りURLが含まれ、公開リポジトリの site_log.txt に漏れるため
+    # ステータスコードだけの例外に置き換える。429(レート制限)は5秒待って1度だけリトライ。
+    for attempt in range(2):
+        try:
+            resp = requests.get(RAKUTEN_SEARCH_URL, params=params, timeout=15)
+        except requests.RequestException as e:
+            raise RuntimeError(f"楽天APIへの接続に失敗しました ({type(e).__name__})") from None
+        if resp.status_code == 429 and attempt == 0:
+            time.sleep(5)
+            continue
+        break
+    if not resp.ok:
+        raise RuntimeError(f"楽天APIエラー: HTTP {resp.status_code}")
     data = resp.json()
 
     items = []

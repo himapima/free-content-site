@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 comments-worker/node_modules/
 comments-worker/.wrangler/
+site_log.txt
