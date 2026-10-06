@@ -513,3 +513,14 @@ subprocess.TimeoutExpired: Command '['C:\\Users\\naoya\\tools\\node\\node-v24.21
 [2026-10-06T21:23:18] --- 1/2件目 ---
 [2026-10-06T21:23:22] 記事生成を開始します
 [2026-10-06T21:26:34] 公開しました: 靴下・インナーの清潔感を保つ洗濯と素材選びのコツ (20261006-fashion-info-1)
+[2026-10-06T21:26:37]   GitHubへpushしました
+[2026-10-06T21:26:37] [2026-10-06T21:23:22] 記事生成を開始します
+  商品紹介記事を作成します(ジャンル: メンズファッション)
+  [エラー] 楽天APIの商品取得に失敗しました: 429 Client Error: Too Many Requests for url: https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701?applicationId=1b2325ca-14c2-42f5-82e2-e6acddb86e8f&accessKey=pk_9olL3IRjInridkxmkIfXquxSY2NLdBissZPUSXwpVL2&affiliateId=5737572e.018af34b.5737572f.9cd0fe5a&format=json&hits=30&sort=-reviewCount&keyword=%E3%83%A1%E3%83%B3%E3%82%BA%E3%83%95%E3%82%A1%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3
+  商品紹介記事が作れなかったため、情報系記事にフォールバックします
+  情報系記事を作成します(ジャンル: メンズファッション / テーマ: 靴下・インナーなど見えない部分の清潔感の保ち方)
+[2026-10-06T21:26:34] 公開しました: 靴下・インナーの清潔感を保つ洗濯と素材選びのコツ (20261006-fashion-info-1)
+[2026-10-06T21:26:37]   GitHubへpushしました
+[2026-10-06T21:28:37] --- 2/2件目 ---
+[2026-10-06T21:28:37] 記事生成を開始します
+[2026-10-06T21:29:27] 公開しました: ノンフライヤーとフライパン徹底比較 便利家電の選び方 (20261006-appliance-product-2)
