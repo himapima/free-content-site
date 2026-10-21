@@ -5627,5 +5627,111 @@
     "affiliate_items": [],
     "published_at": "2026-10-20T19:47:25",
     "item_ids": []
+  },
+  {
+    "slug": "20261021-fashion-product-1",
+    "title": "メンズファッション比較|Tシャツ&カーディガン3選",
+    "meta_description": "長袖Tシャツ・7分袖Tシャツ・ニットカーディガンの3点を、レビュー評価や素材・デザインの特徴から比較し、季節の変わり目に使いやすいアイテムを紹介します。",
+    "genre_id": "fashion",
+    "genre_label": "メンズファッション",
+    "genre_color": "#1d4ed8",
+    "photo_query": "men fashion casual style",
+    "type": "product",
+    "intro": "季節の変わり目に活躍するメンズアイテムを3点ピックアップしました。長袖・7分袖のTシャツと羽織りに便利なニットカーディガンを、レビュー評価や素材の特徴から比較してみます。",
+    "sections": [
+      {
+        "heading": "長袖Tシャツで着回し力をプラス",
+        "body": "秋冬に一枚持っておきたいのが、ストレッチ素材を使った長袖Tシャツです。【タダ割】Vネック ロンTメンズ 無地◆ストレッチVネック無地長袖Tシャツ◆ロン…は、Vネックのデザインで首元がすっきりと見えるため、ジャケットやカーディガンの下に着ても窮屈な印象になりにくいのが特徴です。レビュー評価は平均4.44、件数も2,172件と多く、実際に購入した人からの評価が積み重なっている点は選ぶ際の安心材料になりそうです。無地でシンプルなデザインなので、他のアイテムと合わせやすく、通勤からカジュアルな休日まで幅広いシーンで活躍してくれそうです。",
+        "product_index": 1,
+        "item": {
+          "id": "jiggys-shop:10005417",
+          "name": "【タダ割】Vネック ロンTメンズ 無地◆ストレッチVネック無地長袖Tシャツ◆ロン…",
+          "price": 1995,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qbh6o.76er2347.g00qbh6o.76er3e2b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fjiggys-shop%2Fr-2-033%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fjiggys-shop%2Fi%2F10005417%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/jiggys-shop/cabinet/sp136/204805_m01.jpg?_ex=800x800",
+          "shop": "JIGGYS SHOP(ジギーズショップ)",
+          "review_count": 2172,
+          "review_average": 4.44,
+          "description": "タダ割りでのご購入の場合は、対象商品3枚を必ず同一のカゴで決済してください 生地 生地についての詳細説明はこちら 関連商品 他の人気のメンズ5分・7分袖シャツはこちら"
+        },
+        "id": "section-1"
+      },
+      {
+        "heading": "7分袖Tシャツで季節の変わり目に対応",
+        "body": "季節の変わり目で温度調節に悩む方には、7分袖のTシャツも選択肢になります。【タダ割】Tシャツ 7分袖◆ストレッチクルーネック 無地7分袖Tシャツ◆七分袖 …は、クルーネックのストレッチ素材を採用しており、腕まくりのような軽い季節感を演出しやすいアイテムです。レビュー評価は平均4.45、件数は2,032件にのぼり、長袖タイプと並んで多くの人に支持されていることがうかがえます。無地デザインのため、パンツやアウターの色柄を問わず合わせやすく、1枚で着ても、インナーとして重ね着しても使いやすい点が魅力です。",
+        "product_index": 2,
+        "item": {
+          "id": "jiggys-shop:10004215",
+          "name": "【タダ割】Tシャツ 7分袖◆ストレッチクルーネック 無地7分袖Tシャツ◆七分袖 …",
+          "price": 1995,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qbh6o.76er2347.g00qbh6o.76er3e2b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fjiggys-shop%2Fr-2-001%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fjiggys-shop%2Fi%2F10004215%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/jiggys-shop/cabinet/sp136/204807_m01.jpg?_ex=800x800",
+          "shop": "JIGGYS SHOP(ジギーズショップ)",
+          "review_count": 2032,
+          "review_average": 4.45,
+          "description": "タダ割りでのご購入の場合は、対象商品3枚を必ず同一のカゴで決済してください 生地 生地についての詳細説明はこちら 関連商品 他の人気のメンズ5分・7分袖Tシャツ はこちら ★メンズファッションJIGGYS SHOP(ジギーズショップ)のトップページはこちら★"
+        },
+        "id": "section-2"
+      },
+      {
+        "heading": "羽織りに便利なニットカーディガン",
+        "body": "トップスだけでなく羽織りものも揃えておくと、コーディネートの幅が広がります。カーディガン メンズ ニット ニットカーディガン メンズファッション ショールカ…は、丸みのあるショールカラーが特徴で、フロントにはケーブル編みが施されています。ボタンにはバスケットボール釦が使われており、シンプルな中にもアクセントが欲しい方に向いています。レビュー評価は平均4.32、件数は2,021件で、他の2点と同様に多くのレビューが集まっています。秋はトップスとして、冬にはインナーとして重ね着するなど、季節を通じて活用しやすいアイテムです。",
+        "product_index": 3,
+        "item": {
+          "id": "auc-arcade:10001623",
+          "name": "カーディガン メンズ ニット ニットカーディガン メンズファッション ショールカ…",
+          "price": 4980,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qfl6o.76er2b15.g00qfl6o.76er353d/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-arcade%2Fac1775014%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-arcade%2Fi%2F10001623%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/auc-arcade/cabinet/01837823/arcade_ac1775014.jpg?_ex=800x800",
+          "shop": "ARCADE(アーケード)",
+          "review_count": 2021,
+          "review_average": 4.32,
+          "description": "カーディガン,メンズ 今シーズン注目の首元は丸みのある上品な雰囲気のショールカラー、フロントはケーブル編みの大本命ニットカーディガン！ ボタンにはバスケットボール釦を使用でアクセント！ 特殊編み立て機を使用した着心地の良いアクリルニットで、シャツ等の組み合わせの着こなしなどでも大人っぽく着ていただきたいアイテムです。 秋はトップスとして、冬にもインに重宝すること間違いないアイテムです！！ 数にも限りが御座いますので、是非この機会に！ニット,カーディガン,メンズ,ケーブルニット コメント ニット セーター カーディガン 今シーズン注目の首元は丸みのある上品な雰囲気のショールカラー、フロントはケーブル編みの大本命ニットカーディガン！ ボタンにはバスケットボール釦を使用でアクセント！特殊編み立て機を使用した着心地もバツグン！ 秋はトップスとして、冬にもインに重宝すること間違いないアイテムです！！ 数にも限りが御座いますのでぜひこの機会に！ サイズスペック 表記/cm SIZE 着丈 身幅 肩幅 袖丈 M 約61cm 約50cm 約40cm 約61cm L 約62cm 約52cm 約42cm 約62cm XL(LL) 約64cm 約53cm 約43cm 約63cm Item info. アイテム メンズ ニット/カーディガン ケーブル編みショールカラーニットカーディガン/メンズ 着用感 通常サイズ カラー オフホワイト、ブラック、ネイビー、グレー、ミックス系 素材 アクリル 100%　編み目透け感：網目により少しあり グレーのみ：アクリル 100%　ポリエステル17％ モデル 身長：181cm 体重：67kg / B86 / W75 / H96 身長：185cm 体重：75kg / B95 / W76 / H93 着用サイズ L ガイド ※記載サイズは平置き実寸になります。 ※サイズ表記の数値に若干の誤差が生じる場合がございます。あらかじめご了承ください。 ※ご覧になっているモニター、ブラウザにより色の違い等により、実際の商品と色味が若干異なる場合がございます。"
+        },
+        "id": "section-3"
+      }
+    ],
+    "conclusion": "長袖Tシャツ、7分袖Tシャツ、ニットカーディガンは、いずれもレビュー件数が多く、季節の変わり目のコーディネートに取り入れやすいアイテムです。好みや着用シーンに合わせて選んでみてください。",
+    "affiliate_items": [
+      {
+        "id": "jiggys-shop:10005417",
+        "name": "【タダ割】Vネック ロンTメンズ 無地◆ストレッチVネック無地長袖Tシャツ◆ロン…",
+        "price": 1995,
+        "url": "https://hb.afl.rakuten.co.jp/hgc/g00qbh6o.76er2347.g00qbh6o.76er3e2b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fjiggys-shop%2Fr-2-033%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fjiggys-shop%2Fi%2F10005417%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+        "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/jiggys-shop/cabinet/sp136/204805_m01.jpg?_ex=800x800",
+        "shop": "JIGGYS SHOP(ジギーズショップ)",
+        "review_count": 2172,
+        "review_average": 4.44,
+        "description": "タダ割りでのご購入の場合は、対象商品3枚を必ず同一のカゴで決済してください 生地 生地についての詳細説明はこちら 関連商品 他の人気のメンズ5分・7分袖シャツはこちら"
+      },
+      {
+        "id": "jiggys-shop:10004215",
+        "name": "【タダ割】Tシャツ 7分袖◆ストレッチクルーネック 無地7分袖Tシャツ◆七分袖 …",
+        "price": 1995,
+        "url": "https://hb.afl.rakuten.co.jp/hgc/g00qbh6o.76er2347.g00qbh6o.76er3e2b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fjiggys-shop%2Fr-2-001%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fjiggys-shop%2Fi%2F10004215%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+        "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/jiggys-shop/cabinet/sp136/204807_m01.jpg?_ex=800x800",
+        "shop": "JIGGYS SHOP(ジギーズショップ)",
+        "review_count": 2032,
+        "review_average": 4.45,
+        "description": "タダ割りでのご購入の場合は、対象商品3枚を必ず同一のカゴで決済してください 生地 生地についての詳細説明はこちら 関連商品 他の人気のメンズ5分・7分袖Tシャツ はこちら ★メンズファッションJIGGYS SHOP(ジギーズショップ)のトップページはこちら★"
+      },
+      {
+        "id": "auc-arcade:10001623",
+        "name": "カーディガン メンズ ニット ニットカーディガン メンズファッション ショールカ…",
+        "price": 4980,
+        "url": "https://hb.afl.rakuten.co.jp/hgc/g00qfl6o.76er2b15.g00qfl6o.76er353d/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-arcade%2Fac1775014%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-arcade%2Fi%2F10001623%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+        "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/auc-arcade/cabinet/01837823/arcade_ac1775014.jpg?_ex=800x800",
+        "shop": "ARCADE(アーケード)",
+        "review_count": 2021,
+        "review_average": 4.32,
+        "description": "カーディガン,メンズ 今シーズン注目の首元は丸みのある上品な雰囲気のショールカラー、フロントはケーブル編みの大本命ニットカーディガン！ ボタンにはバスケットボール釦を使用でアクセント！ 特殊編み立て機を使用した着心地の良いアクリルニットで、シャツ等の組み合わせの着こなしなどでも大人っぽく着ていただきたいアイテムです。 秋はトップスとして、冬にもインに重宝すること間違いないアイテムです！！ 数にも限りが御座いますので、是非この機会に！ニット,カーディガン,メンズ,ケーブルニット コメント ニット セーター カーディガン 今シーズン注目の首元は丸みのある上品な雰囲気のショールカラー、フロントはケーブル編みの大本命ニットカーディガン！ ボタンにはバスケットボール釦を使用でアクセント！特殊編み立て機を使用した着心地もバツグン！ 秋はトップスとして、冬にもインに重宝すること間違いないアイテムです！！ 数にも限りが御座いますのでぜひこの機会に！ サイズスペック 表記/cm SIZE 着丈 身幅 肩幅 袖丈 M 約61cm 約50cm 約40cm 約61cm L 約62cm 約52cm 約42cm 約62cm XL(LL) 約64cm 約53cm 約43cm 約63cm Item info. アイテム メンズ ニット/カーディガン ケーブル編みショールカラーニットカーディガン/メンズ 着用感 通常サイズ カラー オフホワイト、ブラック、ネイビー、グレー、ミックス系 素材 アクリル 100%　編み目透け感：網目により少しあり グレーのみ：アクリル 100%　ポリエステル17％ モデル 身長：181cm 体重：67kg / B86 / W75 / H96 身長：185cm 体重：75kg / B95 / W76 / H93 着用サイズ L ガイド ※記載サイズは平置き実寸になります。 ※サイズ表記の数値に若干の誤差が生じる場合がございます。あらかじめご了承ください。 ※ご覧になっているモニター、ブラウザにより色の違い等により、実際の商品と色味が若干異なる場合がございます。"
+      }
+    ],
+    "published_at": "2026-10-21T19:52:42",
+    "item_ids": [
+      "jiggys-shop:10005417",
+      "jiggys-shop:10004215",
+      "auc-arcade:10001623"
+    ]
   }
 ]
