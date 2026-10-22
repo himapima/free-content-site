@@ -24,6 +24,34 @@ POSTS_PER_RUN = 2
 INTERVAL_SECONDS = 120  # 連続実行の間隔(APIへの負荷を分散するため)
 
 
+# 2026-10-21 ユーザー「起動遅くてもやれ」「全部やって」: タスクスケジューラに「毎日19:00から30分おき」の
+# トリガーを足した(19時前から付けっぱなしの日も動く)。0〜5時の起動は前の晩の続きとして前日分を扱う。
+# 30分おきに呼ばれるので、同時に2つ動かないようロックをかける(プロセスが終われば自動で外れる)。
+LATE_NIGHT_UNTIL_HOUR = 5
+
+
+def target_date(now):
+    """この起動で扱う日付。19時前(5時以降)なら None"""
+    from datetime import timedelta as _td
+    if now.hour < LATE_NIGHT_UNTIL_HOUR:
+        return (now - _td(days=1)).strftime("%Y-%m-%d")
+    if now.hour < 19:
+        return None
+    return now.strftime("%Y-%m-%d")
+
+
+def acquire_lock(path):
+    import msvcrt
+    f = open(path, "a+")
+    try:
+        f.seek(0)
+        msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+        return f
+    except OSError:
+        f.close()
+        return None
+
+
 def log(message: str):
     line = f"[{datetime.now().isoformat(timespec='seconds')}] {message}"
     print(line)
@@ -43,17 +71,14 @@ def mark_run_today(today: str):
 
 def main():
     now = datetime.now()
-    today = now.strftime("%Y-%m-%d")
+    today = target_date(now)
+    if today is None or already_run_today(today):
+        return  # 19時前 or 実行済み(30分おきに呼ばれるのでログは残さない)
+    lock = acquire_lock(BASE_DIR / "run_if_evening.lock")
+    if lock is None:
+        return  # 別のプロセスが実行中
 
-    if now.hour < 19:
-        log(f"19時より前({now.strftime('%H:%M')})なので今回は実行しません。")
-        return
-
-    if already_run_today(today):
-        log("本日はすでに実行済みなのでスキップします。")
-        return
-
-    log(f"19時以降のログオンを検知。generate_and_publish.py を{POSTS_PER_RUN}回連続実行します。")
+    log(f"19時以降の起動を検知({today}分)。generate_and_publish.py を{POSTS_PER_RUN}回連続実行します。")
 
     success_count = 0
     for i in range(POSTS_PER_RUN):
