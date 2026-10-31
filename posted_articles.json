@@ -7126,5 +7126,111 @@
       "ilemon:10000047",
       "being:10000228"
     ]
+  },
+  {
+    "slug": "20261031-fashion-product-2",
+    "title": "メンズファッション比較|防寒インナー&ポロ&ロングT",
+    "meta_description": "防寒インナー、ドット柄ポロシャツ、ロングTシャツの3点を価格とレビュー評価から比較。季節や用途で選び方が変わるメンズアイテムの特徴を分かりやすく紹介します。",
+    "genre_id": "fashion",
+    "genre_label": "メンズファッション",
+    "genre_color": "#1d4ed8",
+    "photo_query": "men fashion casual style",
+    "type": "product",
+    "intro": "季節の変わり目や普段のコーディネートで役立つメンズアイテムを3点ピックアップしました。価格帯やレビュー評価が異なる3商品を比較しながら、それぞれどんな場面に向いているのかをご紹介します。",
+    "sections": [
+      {
+        "heading": "冷える季節に頼れる防寒インナーの特徴",
+        "body": "気温が下がる時期は、アウターの下に着る防寒インナーの有無で体感が大きく変わります。『49%OFF!【期間限定：1枚1,000円！3枚セット購入で】元祖 暖かい 裏起…』は1,390円(税込)という手に取りやすい価格帯でありながら、レビュー件数2,872件・平均評価3.91という多くの購入者からの評価が集まっている商品です。商品説明には価格に関する案件(メーカー希望小売価格の表示やキャンセルポリシーの追記)が中心に記載されており、素材感などの詳細情報は限られていますが、レビュー数の多さからも需要の高さがうかがえます。複数枚セットでの購入を検討している方は、価格面でのメリットも確認しておくとよいでしょう。",
+        "product_index": 1,
+        "item": {
+          "id": "darkangel:10023279",
+          "name": "49%OFF!【期間限定：1枚1,000円！3枚セット購入で】元祖 暖かい 裏起…",
+          "price": 1390,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00q8qjo.76er29ab.g00q8qjo.76er3d41/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdarkangel%2Fncleg-2789%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fdarkangel%2Fi%2F10023279%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/darkangel/cabinet/11667147/11/2789-main-251107.jpg?_ex=800x800",
+          "shop": "Dark Angel (ダークエンジェル)",
+          "review_count": 2872,
+          "review_average": 3.91,
+          "description": "メーカー希望小売価格はメーカーサイトに基づいて掲載しています メーカー希望小売価格はメーカーサイトに基づいて掲載しています キャンセルポリシーの追加（5月21日19:00） メーカー希望小売価格はメーカーサイトに基づいて掲載しています"
+        },
+        "id": "section-1"
+      },
+      {
+        "heading": "爽やかな印象を作るドット柄ポロシャツ",
+        "body": "きちんと感とカジュアルさを両立させたいときに選びやすいのがポロシャツです。『ポロシャツ ドット 水玉柄 2枚衿 メンズ ファッション トップス 服 春 夏 …』は1,998円(税込)で、レビュー件数1,854件・平均評価4.33と、今回紹介する3点の中でも評価の高さが目立つアイテムです。商品説明によると、さらりとした風合いと優れた通気性が特徴の鹿の子素材を使用しており、前立てや袖裏、衿元にドット柄をあしらうことで上品な大人のカジュアル感を演出しているとのことです。また、ややコンパクトなサイズ感によりスマートな印象で着用できる点も特徴として挙げられています。春から夏にかけての通気性を重視したい方に向いている一着です。",
+        "product_index": 2,
+        "item": {
+          "id": "aronacasual:10001506",
+          "name": "ポロシャツ ドット 水玉柄 2枚衿 メンズ ファッション トップス 服 春 夏 …",
+          "price": 1998,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qqyqo.76er220f.g00qqyqo.76er3030/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Faronacasual%2Far-tmr-001%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Faronacasual%2Fi%2F10001506%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/aronacasual/cabinet/21/ar-tmr-001_800.jpg?_ex=800x800",
+          "shop": "アローナ",
+          "review_count": 1854,
+          "review_average": 4.33,
+          "description": "さらりとした風合いと優れた通気性が特徴の鹿の子素材ポロシャツ。前立て、袖裏、衿元に爽やかなドット柄を使い、上品な大人のカジュアル感を醸し出します。ややコンパクトなサイズ感でスマートな印象で着用する事が出来ます。"
+        },
+        "id": "section-2"
+      },
+      {
+        "heading": "着回しやすいロングTシャツの魅力",
+        "body": "部屋着から普段着まで幅広く使える一枚を探している方には、ロングTシャツも選択肢に入ります。『送料無料 2026年リニューアルバージョン ロングTシャツ メンズ 長袖Tシャツ…』は899円(税込)と今回の3点の中で最も価格が抑えられており、レビュー件数1,849件・平均評価4.31と安定した評価を得ています。商品説明では、オールド感のあるアメカジ、フォトプリント、ミリタリープリントなどバラエティーに富んだ柄が用意されており、サイズも3Lまで展開されていると紹介されています。カラー展開も多く、部屋着やカジュアルコーデなど複数の場面で使い分けたい方に適したアイテムといえます。",
+        "product_index": 3,
+        "item": {
+          "id": "topism:10004205",
+          "name": "送料無料 2026年リニューアルバージョン ロングTシャツ メンズ 長袖Tシャツ…",
+          "price": 899,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qroeo.76er2e43.g00qroeo.76er3f05/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftopism%2Fnt-shirt-9-top%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftopism%2Fi%2F10004205%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/topism/cabinet/b/nt-shirt/nt-shirt-9-c.jpg?_ex=800x800",
+          "shop": "TopIsm メンズ ファッション 通販",
+          "review_count": 1849,
+          "review_average": 4.31,
+          "description": "メンズロングTシャツ/メンズ長袖Tシャツ 2026年リニューアルバージョン入荷！ バラエティーな柄のプリント長袖ロングTシャツ！ 拘りのあるオールド感漂うアメカジ、フォトプリント、ミリタリープリントなどサイズは3Lまで！ 部屋着、普段着、カジュアルコーデなど幅広いシーンに使え、何枚あっても困らないアメカジロゴプリント長袖ロングTシャツです。 カラー 1-ワイン 2-ネイビー 3-グレー 4-ブラック 5-ホワイト 6-ブラック 7-ネイビー 8-ホワイト 9-ブラック 10-ブラック 11-カーキ 12-ブラック 13-ネイビー 14-チャコール 15-チャコール 16-ホワイト 17-ホワイト 18-ブラック 20-ブラック 21-ホワイト 22-グレー 23-ネイビー 24-ブラック 25-カーキ 26-ブラック 素材：綿100％ グレーは綿90％　レーヨン10％ ※製造工程の過程による、小さなほつれ、微小な縫製のずれなどの 返品対応は致しかねます。ご了承ください。 ≪アイテムガイド≫ ・着用サイズ感：ふつう ・生地の厚さ：ふつう ・透け感：なし ・伸縮性：あり ※上記サイズ感はスタッフ個人的な感想となります。"
+        },
+        "id": "section-3"
+      }
+    ],
+    "conclusion": "防寒インナー、通気性に優れたポロシャツ、着回しやすいロングTシャツと、それぞれ目的の異なる3点をご紹介しました。季節や使うシーンに合わせて、レビュー評価や商品説明の内容を参考に選んでみてください。",
+    "affiliate_items": [
+      {
+        "id": "darkangel:10023279",
+        "name": "49%OFF!【期間限定：1枚1,000円！3枚セット購入で】元祖 暖かい 裏起…",
+        "price": 1390,
+        "url": "https://hb.afl.rakuten.co.jp/hgc/g00q8qjo.76er29ab.g00q8qjo.76er3d41/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdarkangel%2Fncleg-2789%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fdarkangel%2Fi%2F10023279%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+        "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/darkangel/cabinet/11667147/11/2789-main-251107.jpg?_ex=800x800",
+        "shop": "Dark Angel (ダークエンジェル)",
+        "review_count": 2872,
+        "review_average": 3.91,
+        "description": "メーカー希望小売価格はメーカーサイトに基づいて掲載しています メーカー希望小売価格はメーカーサイトに基づいて掲載しています キャンセルポリシーの追加（5月21日19:00） メーカー希望小売価格はメーカーサイトに基づいて掲載しています"
+      },
+      {
+        "id": "aronacasual:10001506",
+        "name": "ポロシャツ ドット 水玉柄 2枚衿 メンズ ファッション トップス 服 春 夏 …",
+        "price": 1998,
+        "url": "https://hb.afl.rakuten.co.jp/hgc/g00qqyqo.76er220f.g00qqyqo.76er3030/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Faronacasual%2Far-tmr-001%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Faronacasual%2Fi%2F10001506%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+        "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/aronacasual/cabinet/21/ar-tmr-001_800.jpg?_ex=800x800",
+        "shop": "アローナ",
+        "review_count": 1854,
+        "review_average": 4.33,
+        "description": "さらりとした風合いと優れた通気性が特徴の鹿の子素材ポロシャツ。前立て、袖裏、衿元に爽やかなドット柄を使い、上品な大人のカジュアル感を醸し出します。ややコンパクトなサイズ感でスマートな印象で着用する事が出来ます。"
+      },
+      {
+        "id": "topism:10004205",
+        "name": "送料無料 2026年リニューアルバージョン ロングTシャツ メンズ 長袖Tシャツ…",
+        "price": 899,
+        "url": "https://hb.afl.rakuten.co.jp/hgc/g00qroeo.76er2e43.g00qroeo.76er3f05/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftopism%2Fnt-shirt-9-top%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftopism%2Fi%2F10004205%2F&rafcid=wsc_i_is_1b2325ca-14c2-42f5-82e2-e6acddb86e8f",
+        "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/topism/cabinet/b/nt-shirt/nt-shirt-9-c.jpg?_ex=800x800",
+        "shop": "TopIsm メンズ ファッション 通販",
+        "review_count": 1849,
+        "review_average": 4.31,
+        "description": "メンズロングTシャツ/メンズ長袖Tシャツ 2026年リニューアルバージョン入荷！ バラエティーな柄のプリント長袖ロングTシャツ！ 拘りのあるオールド感漂うアメカジ、フォトプリント、ミリタリープリントなどサイズは3Lまで！ 部屋着、普段着、カジュアルコーデなど幅広いシーンに使え、何枚あっても困らないアメカジロゴプリント長袖ロングTシャツです。 カラー 1-ワイン 2-ネイビー 3-グレー 4-ブラック 5-ホワイト 6-ブラック 7-ネイビー 8-ホワイト 9-ブラック 10-ブラック 11-カーキ 12-ブラック 13-ネイビー 14-チャコール 15-チャコール 16-ホワイト 17-ホワイト 18-ブラック 20-ブラック 21-ホワイト 22-グレー 23-ネイビー 24-ブラック 25-カーキ 26-ブラック 素材：綿100％ グレーは綿90％　レーヨン10％ ※製造工程の過程による、小さなほつれ、微小な縫製のずれなどの 返品対応は致しかねます。ご了承ください。 ≪アイテムガイド≫ ・着用サイズ感：ふつう ・生地の厚さ：ふつう ・透け感：なし ・伸縮性：あり ※上記サイズ感はスタッフ個人的な感想となります。"
+      }
+    ],
+    "published_at": "2026-10-31T19:03:43",
+    "item_ids": [
+      "darkangel:10023279",
+      "aronacasual:10001506",
+      "topism:10004205"
+    ]
   }
 ]
