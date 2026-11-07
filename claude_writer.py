@@ -152,8 +152,20 @@ def generate_info_article(genre_label: str, topic_hint: str, avoid_titles: list[
 
 
 def generate_product_article(genre_label: str, topic_hint: str, items: list[dict],
-                              avoid_titles: list[str], max_attempts: int = 2) -> Optional[dict]:
+                              avoid_titles: list[str], max_attempts: int = 2,
+                              search_keyword: str = "") -> Optional[dict]:
     """楽天APIの実データのみを根拠に商品紹介・比較記事を生成する(Web検索は使わない)"""
+    keyword_rules = ""
+    if search_keyword:
+        keyword_rules = (
+            f"- これは「{search_keyword}」を探している人に向けた、同じ種類の商品の比較記事にすること\n"
+            f"- title は「{search_keyword}」をそのままの表記で先頭近くに入れ、『おすすめ』か『比較』も入れること\n"
+            "- intro で、この種類を選ぶときに見るポイントを商品データから分かる範囲で2〜3個示し、"
+            "各 section の body では同じポイントで違いを比べること\n"
+            "- conclusion は『○○を重視するなら□□』の形で、どんな人にどれが合うかをまとめること。"
+            "□□には商品の特徴が分かる短い呼び名を入れ、『商品1』のような番号は本文のどこにも書かないこと\n"
+            "- 使ったような体験談は書かないこと(「使ってみた」「買ってよかった」等は禁止)\n"
+        )
     facts_blocks = []
     for i, item in enumerate(items, 1):
         facts = [f"商品{i}: {item['name']}", f"価格: {item['price']:,}円(税込)"]
@@ -180,7 +192,8 @@ def generate_product_article(genre_label: str, topic_hint: str, items: list[dict
         "product_index(1始まりの数値)に必ず入れること\n"
         "- heading は商品名をそのまま使わず、内容が伝わる自然で短い見出しにすること\n"
         "- body の中で、商品名(【商品データ】の表記のまま)に一度だけ触れること\n"
-        "- 価格・購入リンクは本文に含めない(別途システム側で追加するため)\n\n"
+        "- 価格・購入リンクは本文に含めない(別途システム側で追加するため)\n"
+        f"{keyword_rules}\n"
         f"【これまでに書いた記事タイトル(重複を避ける)】\n{avoid}\n\n"
         f"執筆が終わったら、次のJSON形式だけを出力してください"
         f"(前後に説明文やコードフェンスを付けず、JSONだけを出力すること):\n{PRODUCT_ARTICLE_JSON_FORMAT}"

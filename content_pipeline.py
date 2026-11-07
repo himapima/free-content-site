@@ -188,6 +188,56 @@ GENRES = [
 ]
 
 
+# 商品紹介記事は「1記事=1種類」にする(2026-11-07)。ジャンル全体の広い語で検索すると
+# 「福袋・トング・ボトルスタンド」のように無関係な3点が並び、読者にも検索にも合わないため。
+# 実際に検索されやすい物の名前を並べる。商品名に含まれる形で書く(_pick_same_type_items が名前一致を見る)。
+PRODUCT_KEYWORDS = {
+    "kitchen": [
+        "水切りラック", "調味料ボトル", "キッチンバサミ", "電気ケトル", "シリコンスチーマー", "サラダスピナー",
+        "縦型ピーラー", "キッチンスケール", "ハンドミキサー", "コーヒーミル", "真空断熱タンブラー", "低温調理器",
+        "エアフライヤー", "電気圧力鍋", "オイルスプレー", "排気口カバー", "スポンジラック", "真空パック器",
+        "シリコン菜箸", "回転トレー", "ハンディチョッパー", "クリップシーラー", "フライパンカバー", "水切りボウル",
+        "キッチンワゴン", "解凍プレート", "キッチンマット", "壁掛けゴミ箱",
+    ],
+    "lifestyle": [
+        "珪藻土バスマット", "突っ張り棒", "圧縮袋", "ネックピロー", "折りたたみハンガー", "有孔ボード",
+        "隙間ブラシ", "ケーブルクリップ", "テレビスタンド", "ブックスタンド", "ゴミ袋ホルダー", "ヨガマット",
+        "温湿度計", "袋止めクリップ", "滑らないハンガー", "ヘアドライタオル", "人感センサーライト", "耳栓",
+        "メガネケース", "折りたたみバケツ", "ランドリーバスケット", "フォームローラー",
+    ],
+    "gadget": [
+        "モバイルバッテリー", "車載スマホホルダー", "スマホスタンド", "巻き取りケーブル", "ワイヤレス充電器",
+        "紛失防止タグ", "スマホリング", "自撮り棒", "モニタースタンド", "トラックボール", "カードリーダー",
+        "Bluetoothスピーカー", "USBハブ", "デスクライト", "モニターライト",
+    ],
+    "fashion": [
+        "裏起毛パンツ", "ダウンジャケット", "ダウンベスト", "ニットカーディガン", "チノパン", "ボアジャケット",
+        "ワイドパンツ", "リュック", "ショルダーバッグ", "スニーカー", "マフラー", "ニット帽", "レザーベルト", "長財布",
+    ],
+    "appliance": [
+        "衣類スチーマー", "布団乾燥機", "ふとんクリーナー", "ハンディクリーナー", "衣類乾燥除湿機", "サーキュレーター",
+        "パネルヒーター", "加湿空気清浄機", "スチーム式加湿器", "電気湯たんぽ", "オイルヒーター", "卓上IH",
+        "毛玉クリーナー", "ロボット掃除機", "電動歯ブラシ", "スマートプラグ", "スマートリモコン", "ホットプレート",
+        "オーブントースター",
+    ],
+    "apple": [
+        "iPhoneケース", "ガラスフィルム", "MagSafe充電器", "Apple Watchバンド", "AirPodsケース", "iPadケース",
+        "Lightningケーブル", "USB-Cケーブル", "iPhoneスタンド", "カメラレンズカバー",
+    ],
+    "china_gadget": [
+        "スマートウォッチ", "スマートバンド", "ワイヤレスイヤホン", "骨伝導イヤホン", "プロジェクター", "スマートリング",
+        "ポータブル電源", "ドライブレコーダー", "アクションカメラ",
+    ],
+}
+# ジャンルの対象を絞る語。検索に足し、商品名にも含むものだけを選ぶ(メンズの記事にレディース商品を混ぜない)
+PRODUCT_REQUIRED_WORD = {"fashion": "メンズ"}
+PRODUCT_EXCLUDE_WORDS = ("福袋", "訳あり", "アウトレット", "ガチャ", "中古", "キッズ")
+MIN_REVIEW_COUNT = 10
+MIN_REVIEW_AVERAGE = 4.0
+MAX_ITEM_PRICE = 50000
+KEYWORD_TRIES = 4  # 1回の記事作成で調べる種類の数(楽天APIの呼びすぎを防ぐ)
+
+
 def load_json(path: Path, default):
     if path.exists():
         with open(path, "r", encoding="utf-8") as f:
@@ -327,33 +377,88 @@ def build_info_article(genre: dict, posted: list[dict], state: dict) -> dict | N
     }
 
 
+def _clean_item_name(name: str) -> str:
+    """楽天の商品名の先頭や途中にある販促の飾り(【楽天1位】＼クーポン／など)を除く"""
+    name = re.sub(r"【[^】]*】|＼[^／]*／|\[[^\]]*\]|★[^★]*★|楽天\d+位", " ", name)
+    return re.sub(r"\s+", " ", name).strip() or name
+
+
+def _pick_same_type_items(keyword: str, items: list[dict], used: set, required_word: str = "") -> list[dict]:
+    """同じ種類の商品だけを比較できるよう、商品名にキーワードを含む高評価の商品を選ぶ。
+    同じ店の商品は1件まで(実質同じ物が3つ並ぶのを防ぐ)。"""
+    key = _normalize_ws(keyword).lower()
+    picked, shops = [], set()
+    for item in items:
+        name = item["name"]
+        if (item["id"] in used
+                or key not in _normalize_ws(name).lower()
+                or required_word not in name
+                or any(w in name for w in PRODUCT_EXCLUDE_WORDS)
+                or (item.get("review_count") or 0) < MIN_REVIEW_COUNT
+                or float(item.get("review_average") or 0) < MIN_REVIEW_AVERAGE
+                or (item.get("price") or 0) > MAX_ITEM_PRICE
+                or item.get("shop") in shops):
+            continue
+        shops.add(item.get("shop"))
+        picked.append(item)
+        if len(picked) == ITEMS_PER_PRODUCT_ARTICLE:
+            break
+    return picked
+
+
+def _find_product_keyword(genre: dict, posted: list[dict], state: dict) -> tuple[str, list[dict]] | None:
+    """まだ使っていない種類を順に調べ、3商品そろう最初の種類を返す。
+    そろわなかった種類も使用済みにして、次回また同じ検索をしないようにする。"""
+    keywords = PRODUCT_KEYWORDS.get(genre["id"], [])
+    state_key = f"used_product_keywords_{genre['id']}"
+    tried = state.get(state_key, [])
+    remaining = [k for k in keywords if k not in tried]
+    if not remaining:
+        tried, remaining = [], list(keywords)
+    used = _used_item_ids(posted)
+    required_word = PRODUCT_REQUIRED_WORD.get(genre["id"], "")
+    found = None
+    for keyword in remaining[:KEYWORD_TRIES]:
+        try:
+            items = rakuten_source.fetch_items(keyword=f"{required_word} {keyword}".strip())
+        except Exception as e:
+            print(f"  [エラー] 楽天APIの商品取得に失敗しました: {e}")
+            break
+        tried = tried + [keyword]
+        picked = _pick_same_type_items(keyword, items, used, required_word)
+        if len(picked) == ITEMS_PER_PRODUCT_ARTICLE:
+            found = (keyword, picked)
+            break
+        print(f"  「{keyword}」は条件に合う商品が{len(picked)}件だけのため見送ります")
+    state[state_key] = tried
+    return found
+
+
 def build_product_article(genre: dict, posted: list[dict], state: dict) -> dict | None:
     print(f"  商品紹介記事を作成します(ジャンル: {genre['label']})")
-    try:
-        items = rakuten_source.fetch_items(keyword=genre["keyword"])
-    except Exception as e:
-        print(f"  [エラー] 楽天APIの商品取得に失敗しました: {e}")
+    found = _find_product_keyword(genre, posted, state)
+    if found is None:
+        print(f"  {genre['label']}に同じ種類で比較できる新規商品がありませんでした")
         return None
-
-    used = _used_item_ids(posted)
-    new_items = [i for i in items if i["id"] not in used][:ITEMS_PER_PRODUCT_ARTICLE]
-    if len(new_items) < 2:
-        print(f"  {genre['label']}に投稿可能な新規商品が足りません({len(new_items)}件)")
-        return None
+    keyword, new_items = found
+    print(f"  比較する種類: {keyword}")
 
     # 楽天の商品名は80〜150字の長い販促文になっていることが多く、AIに一字一句そのまま
     # 再現させるのは非現実的(全角スペースの微妙な差異などで容易に不一致になる)。
     # rakuten_threads_bot/main.py と同じく40字に短縮した表示名を「正式名称」として扱う。
     for item in new_items:
+        item["name"] = _clean_item_name(item["name"])
         if len(item["name"]) > 40:
             item["name"] = item["name"][:40] + "…"
 
-    topic = f"{genre['label']}のおすすめアイテム比較"
+    topic = f"{keyword}のおすすめ{len(new_items)}選と選び方"
     avoid = _titles_for_genre(posted, genre["id"])
-    raw = ai_writer.generate_product_article(genre["label"], topic, new_items, avoid)
+    raw = ai_writer.generate_product_article(genre["label"], topic, new_items, avoid, search_keyword=keyword)
     if raw is None:
         print("  [エラー] 記事生成に失敗しました(商品名が正しく含まれない等)")
         return None
+    if keyword not in raw["title"]:
+        raw["title"] = f"{keyword}おすすめ{len(new_items)}選|{raw['title']}"
 
     _attach_items_to_sections(raw["sections"], new_items)
     _add_section_ids(raw["sections"])
