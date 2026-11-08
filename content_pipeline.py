@@ -377,10 +377,24 @@ def build_info_article(genre: dict, posted: list[dict], state: dict) -> dict | N
     }
 
 
+PROMO_NAME_WORD = re.compile(r"送料無料|ポイント|クーポン|\d+倍|\d+%OFF|セール|限定|あす楽|即納|ランキング|楽天|プレゼント|ギフト|父の日|母の日|クリスマス")
+
+
 def _clean_item_name(name: str) -> str:
     """楽天の商品名の先頭や途中にある販促の飾り(【楽天1位】＼クーポン／など)を除く"""
-    name = re.sub(r"【[^】]*】|＼[^／]*／|\[[^\]]*\]|★[^★]*★|楽天\d+位", " ", name)
-    return re.sub(r"\s+", " ", name).strip() or name
+    raw = name
+    name = re.sub(r"【[^】]*】|＼[^／]*／|\[[^\]]*\]|★[^★]*★|◆[^◆]*◆|楽天\d+位", " ", name)
+    # 2026-11-07 品質: 楽天の商品名は検索用の単語の羅列なので、そのままだと読めない。語を残したまま短くする
+    words = [w for w in re.split(r"[\s//|｜]+", name) if w and not PROMO_NAME_WORD.search(w)]
+    out, seen = [], set()
+    for w in words:
+        if w.lower() in seen:
+            continue
+        if len("".join(out)) + len(w) > 22 and out:
+            break
+        seen.add(w.lower())
+        out.append(w)
+    return " ".join(out).strip() or re.sub(r"\s+", " ", name).strip() or raw
 
 
 def _pick_same_type_items(keyword: str, items: list[dict], used: set, required_word: str = "") -> list[dict]:
