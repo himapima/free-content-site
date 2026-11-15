@@ -1,5 +1,5 @@
 {
-  "last_genre_index": 5,
+  "last_genre_index": 6,
   "used_info_topics_kitchen": [
     "まな板・フライパンを長持ちさせる手入れ方法",
     "一人暮らしの自炊を時短にするキッチン収納の工夫",
@@ -77,5 +77,8 @@
   ],
   "used_product_keywords_lifestyle": [
     "珪藻土バスマット"
+  ],
+  "used_product_keywords_apple": [
+    "iPhoneケース"
   ]
 }
