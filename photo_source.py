@@ -58,7 +58,8 @@ def fetch_photo(query: str, dest_path: Path) -> bool:
 
         used = _load_used_ids()
         candidates = [p for p in photos if p["id"] not in used] or photos
-        chosen = random.choice(candidates)
+        # 後ろの候補ほど内容から外れるので、まだ使っていない上位6枚から選ぶ(2026-11-24)
+        chosen = random.choice(candidates[:6])
 
         image_url = chosen["src"]["large"]
         img_resp = requests.get(image_url, timeout=20)

@@ -126,6 +126,12 @@ def create_hero_image(article: dict, photo_query: str | None = None) -> str:
         dest = OUTPUT_DIR / f"{slug}.png"
         if photo_source.fetch_photo(photo_query, dest):
             return f"{slug}.png"
+        # 記事ごとの検索語で見つからないときは、ジャンル固定の語でもう一度探す(2026-11-24)
+        import content_pipeline
+        genre_query = next((g.get("photo_query", "") for g in content_pipeline.GENRES
+                            if g["id"] == article.get("genre_id")), "")
+        if genre_query and genre_query != photo_query and photo_source.fetch_photo(genre_query, dest):
+            return f"{slug}.png"
 
     return create_thumbnail(article["title"], slug)
 

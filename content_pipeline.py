@@ -346,6 +346,14 @@ def _add_section_ids(sections: list[dict]):
         section["id"] = f"section-{i}"
 
 
+def _article_photo_query(raw: dict, genre: dict) -> str:
+    """記事の内容に合う写真の検索語(AIが記事ごとに決めた英語)。無い・英語でないときはジャンル固定の語"""
+    q = str(raw.get("photo_query") or "").strip()
+    if q.isascii() and 3 <= len(q) <= 60:
+        return q
+    return genre.get("photo_query", "")
+
+
 def build_info_article(genre: dict, posted: list[dict], state: dict) -> dict | None:
     topic = pick_info_topic(genre, state)
     print(f"  情報系記事を作成します(ジャンル: {genre['label']} / テーマ: {topic})")
@@ -365,7 +373,7 @@ def build_info_article(genre: dict, posted: list[dict], state: dict) -> dict | N
         "genre_id": genre["id"],
         "genre_label": genre["label"],
         "genre_color": genre.get("color", "#374151"),
-        "photo_query": genre.get("photo_query", ""),
+        "photo_query": _article_photo_query(raw, genre),
         "type": "info",
         "topic": topic,
         "intro": raw["intro"],

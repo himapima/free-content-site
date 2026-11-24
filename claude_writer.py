@@ -47,7 +47,9 @@ ARTICLE_JSON_FORMAT = (
     '{"title": "記事タイトル", "meta_description": "120字程度の要約",'
     ' "intro": "導入文(150字程度)",'
     ' "sections": [{"heading": "見出し", "body": "本文"}, ...],'
-    ' "conclusion": "まとめ(100字程度)"}'
+    ' "conclusion": "まとめ(100字程度)",'
+    # 2026-11-24 ジャンル固定の検索語だと、イヤホンの記事にカメラの写真など無関係な写真になるため記事ごとに決める
+    ' "photo_query": "記事の主役の物・場所が写った写真を探す英語2〜4語(例: wireless earbuds charging case / condensation window)"}'
 )
 
 PRODUCT_ARTICLE_JSON_FORMAT = (
