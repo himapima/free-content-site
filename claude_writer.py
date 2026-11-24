@@ -128,7 +128,7 @@ def _missing_names(article: dict, required_names: list[str]) -> list[str]:
 def generate_info_article(genre_label: str, topic_hint: str, avoid_titles: list[str],
                            max_attempts: int = 2) -> Optional[dict]:
     """WebSearchで実際にリサーチしてから、情報系記事を1回のClaude呼び出しで生成する"""
-    avoid = "\n".join(f"- {t}" for t in avoid_titles[:15]) or "(なし)"
+    avoid = "\n".join(f"- {t}" for t in avoid_titles[-60:]) or "(なし)"
     prompt = (
         f"あなたはブログ編集者です。「{genre_label}」ジャンルで、「{topic_hint}」をテーマにした"
         "ブログ記事を書いてください。\n\n"
@@ -181,7 +181,7 @@ def generate_product_article(genre_label: str, topic_hint: str, items: list[dict
         facts_blocks.append("\n".join(facts))
     facts_text = "\n\n".join(facts_blocks)
 
-    avoid = "\n".join(f"- {t}" for t in avoid_titles[:15]) or "(なし)"
+    avoid = "\n".join(f"- {t}" for t in avoid_titles[-60:]) or "(なし)"
     names = "、".join(f"『{item['name']}』" for item in items)
     required_names = [item["name"] for item in items]
 
