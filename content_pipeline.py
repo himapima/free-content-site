@@ -451,8 +451,15 @@ def _clean_item_name(name: str) -> str:
     """楽天の商品名の先頭や途中にある販促の飾り(【楽天1位】＼クーポン／など)を除く"""
     raw = name
     name = re.sub(r"【[^】]*】|＼[^／]*／|\[[^\]]*\]|★[^★]*★|◆[^◆]*◆|楽天\d+位", " ", name)
+    # 2026-11-28 品質: 「…4枚」「別売 や《 》キャップ付き★… のような切れ端が記事に出ていた。
+    # 「別売」などの注記・空のかっこ・記号を除き、かぎかっこは外して中身だけ残す
+    name = re.sub(r"[「『(（《〈]\s*別売[^」』)）》〉]*[」』)）》〉]?|[(（《〈「『]\s*[)）》〉」』]", " ", name)
+    name = re.sub(r"[★☆◆◇■□●○※]", " ", name)
+    name = re.sub(r"[「」『』《》〈〉]", " ", name)
     # 2026-11-07 品質: 楽天の商品名は検索用の単語の羅列なので、そのままだと読めない。語を残したまま短くする
-    words = [w for w in re.split(r"[\s//|｜]+", name) if w and not PROMO_NAME_WORD.search(w)]
+    words = [w for w in re.split(r"[\s//|｜]+", name)
+             if w and not PROMO_NAME_WORD.search(w) and "別売" not in w
+             and w.count("(") + w.count("（") == w.count(")") + w.count("）")]
     out, seen = [], set()
     for w in words:
         if w.lower() in seen:
